@@ -1,0 +1,13 @@
+class Solution:
+    def maxAreaOfIsland(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        def dfs(m,n):
+            if 0 <= m < len(grid) and 0 <= n < len(grid[0]) and grid[m][n] == 1:
+                grid[m][n] = 0
+                return 1 + dfs(m-1,n) + dfs(m+1,n) + dfs(m,n+1) + dfs(m,n-1)
+            return 0
+        areas = [dfs(m,n) for m in range(len(grid)) for n in range(len(grid[0]))]
+        return max(areas) if areas else 0
