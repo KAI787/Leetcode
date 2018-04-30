@@ -1,0 +1,55 @@
+Method 1:
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def sumOfLeftLeaves(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root:
+            return 0
+        if root.left and not root.left.left and not root.left.right:
+            return root.left.val + self.sumOfLeftLeaves(root.right)
+        return self.sumOfLeftLeaves(root.left) + self.sumOfLeftLeaves(root.right)
+        
+Method 2:
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def sumOfLeftLeaves(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        
+        if not root:
+            return 0
+        sum = 0
+        q = []
+        s = set()
+        q.append(root)
+        while 0 != len(q):
+            
+            tmp = q.pop(0)
+
+            if tmp.left:
+                q.append(tmp.left)
+                s.add(tmp.left)
+                
+            if tmp.right:
+                q.append(tmp.right)
+                
+            if not tmp.left and not tmp.right and tmp in s:
+                sum += tmp.val
+        return sum
