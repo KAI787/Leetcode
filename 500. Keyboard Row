@@ -1,0 +1,16 @@
+class Solution:
+    def findWords(self, words):
+        """
+        :type words: List[str]
+        :rtype: List[str]
+        """
+        set1 = set(list("QWERTYUIOPqwertyuiop"))
+        set2 = set(list("ASDFGHJKLasdfghjkl"))
+        set3 = set(list("ZXCVBNMzxcvbnm"))
+        out_set = []
+        
+        for word in words:
+            set_w = set(word)
+            if(set_w.issubset(set1) or set_w.issubset(set2) or set_w.issubset(set3)):
+                out_set.append(word)
+        return out_set
