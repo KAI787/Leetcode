@@ -1,0 +1,17 @@
+var containsNearbyDuplicate = function(nums, k) {
+//if k<1, then there must be no suitable duplicate numbers.
+    if(k < 1)
+        return false;
+    var dup = {};
+    for (var i = 0; i < nums.length; i++){
+        if (dup[nums[i]])
+            return true; 
+        else{
+//delete numbers which overrange.
+            if (i >= k)
+                dup[nums[i-k]] = undefined;
+            dup[nums[i]] = true;
+        }
+    }
+    return false;
+};
