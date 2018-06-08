@@ -1,0 +1,17 @@
+var getMinimumDifference = function(root) {
+    var pre = undefined;
+    var diff = Infinity;
+    function inOrder(root){
+        if (root === null)
+            return;
+        inOrder(root.left);
+        
+        if (pre !== undefined && diff > root.val - pre)
+            diff = root.val - pre;
+        pre = root.val;
+        
+        inOrder (root.right);
+    }
+    inOrder (root);
+    return diff;
+};
