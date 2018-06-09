@@ -1,0 +1,6 @@
+var twoSum = function(numbers, target) {
+    var head=0, tail=numbers.length-1;
+    while(numbers[head]+numbers[tail]!==target && head<tail)
+        numbers[head]+numbers[tail]<target? head++: tail--;
+    return [head+1,tail+1];
+};
