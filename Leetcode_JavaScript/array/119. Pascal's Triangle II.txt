@@ -1,0 +1,12 @@
+var getRow = function(rowIndex) {
+    var res = [1];
+    for (var i=0; i<rowIndex; i++){
+        res.unshift(1);
+        for (var j=0; j<=i; j++){                
+            res[j] = (res[j+1]||0) + (res[j+2]||0);
+        }
+        res.pop();
+        res.unshift(1);
+    }
+    return res;
+};
