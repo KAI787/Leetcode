@@ -1,0 +1,9 @@
+var maxSubArray = function(nums) {
+    var finalSum = nums[0];
+    var tempSum = nums[0];
+    for (var i=1; i<nums.length; i++){
+        tempSum = Math.max(nums[i], tempSum+nums[i]);
+        finalSum = Math.max(finalSum, tempSum);
+    }
+    return finalSum;
+};
