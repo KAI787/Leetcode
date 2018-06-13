@@ -1,0 +1,10 @@
+var rotate = function(nums, k) {
+    var extra = nums[0];
+    for (var i=0; i<k; i++){
+        extra = nums[nums.length-1];
+        for (var j=nums.length-1; j>0; j--){
+            nums[j] = nums[j-1];
+        }
+        nums[0] = extra;
+    }
+};
