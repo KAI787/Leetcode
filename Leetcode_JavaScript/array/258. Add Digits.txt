@@ -1,0 +1,9 @@
+var addDigits = function(num) {
+    num = "" + num;
+    while (num.length !== 1){
+        var sum = 0;
+        for(var i=0;i<num.length; i++)  sum += parseInt(num[i]);
+        num = "" + sum;
+    }
+    return parseInt(num);
+};
