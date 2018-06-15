@@ -1,0 +1,16 @@
+var hasCycle = function(head) {
+    var fast = head, slow = head;
+    while (fast){
+        try{
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        catch(err){
+            return false;
+        }
+        if(fast == slow){
+            return true;
+        }
+    }
+    return false;
+};
