@@ -1,0 +1,15 @@
+var mostCommonWord = function(paragraph, banned) {
+    var words = paragraph.replace(/[,.!?;\']/g,"").toLowerCase().split(' ');
+    
+    var counter = {};
+    let mostUsedWord;
+    let mostUsedNo = 0;
+    words.forEach(word => {
+                 counter[word] = !counter[word]? 1 : counter[word]+1;
+        if (mostUsedNo < counter[word] && !banned.includes(word) ) {
+            mostUsedNo = counter[word];
+            mostUsedWord = word;
+        }
+    })
+        return mostUsedWord;
+};
