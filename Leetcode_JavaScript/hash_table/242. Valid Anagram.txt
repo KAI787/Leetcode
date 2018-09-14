@@ -1,3 +1,14 @@
+method 1:
 var isAnagram = function(s, t) {
     return s.split('').sort().join() === t.split('').sort().join()
 };
+
+
+method 2:
+var isAnagram = function(s, t) {
+    return (sortStr(s) === sortStr(t)); 
+};
+
+var sortStr = (str) => {
+        return str.split('').sort().join('')
+    }
