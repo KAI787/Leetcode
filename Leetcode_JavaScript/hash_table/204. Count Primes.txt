@@ -10,8 +10,8 @@ var countPrimes = function(n) {
             flag[i] = 1;
             result++;
         m = 2;
-        while(i * m < n){
 // for those which are not prime number, make them "defined". 
+        while(i * m < n){
             flag[i*m] = 0;
             m++;
             }
