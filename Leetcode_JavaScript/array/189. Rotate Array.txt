@@ -1,3 +1,4 @@
+Method 1:
 var rotate = function(nums, k) {
     var extra = nums[0];
     for (var i=0; i<k; i++){
@@ -7,4 +8,20 @@ var rotate = function(nums, k) {
         }
         nums[0] = extra;
     }
+};
+
+Method 2(original): O(n)
+var rotate = function(nums, k) {
+    k = k % l;
+    var res = [];
+    var l = nums.length;
+    for (var i=0; i<l; i++){
+        let j = i+k;
+        if (j > l-1){
+            j = j-l;
+        }
+        res[j] = nums[i];
+    }
+    for(let n=0; n<l; n++)
+        nums[n] = res[n];
 };
