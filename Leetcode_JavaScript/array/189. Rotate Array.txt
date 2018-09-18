@@ -1,4 +1,4 @@
-Method 1:
+Method 1: O(kn)
 var rotate = function(nums, k) {
     var extra = nums[0];
     for (var i=0; i<k; i++){
@@ -12,6 +12,7 @@ var rotate = function(nums, k) {
 
 Method 2(original): O(n)
 var rotate = function(nums, k) {
+//incase that k bigger than l
     k = k % l;
     var res = [];
     var l = nums.length;
@@ -22,6 +23,7 @@ var rotate = function(nums, k) {
         }
         res[j] = nums[i];
     }
+//there is no need to return, so let nums[] be the same as res[].
     for(let n=0; n<l; n++)
         nums[n] = res[n];
 };
