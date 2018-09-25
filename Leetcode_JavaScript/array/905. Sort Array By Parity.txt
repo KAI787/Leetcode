@@ -1,0 +1,12 @@
+/**
+ * @param {number[]} A
+ * @return {number[]}
+ */
+var sortArrayByParity = function(A) {
+    var B = new Array();
+    for(let i=0; i<A.length; i++){
+//if the number is even, then add it to head; else add it to tail.
+        A[i] % 2 === 0? B.unshift(A[i]): B.push(A[i]);
+    }
+    return B;
+};
