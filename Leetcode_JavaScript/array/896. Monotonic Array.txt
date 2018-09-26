@@ -1,0 +1,12 @@
+/**
+ * @param {number[]} A
+ * @return {boolean}
+ */
+var isMonotonic = function(A) {
+    var inc = 1, dec = 1;
+    for(let i=1; i<A.length; i++){
+        inc &= (A[i] - A[i-1] >= 0);
+        dec &= (A[i] - A[i-1] <= 0);
+        }
+    return ((inc || dec) === 0? false: true);
+};
