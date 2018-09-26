@@ -1,0 +1,22 @@
+/**
+ * @param {number[]} A
+ * @param {number[]} B
+ * @return {number[]}
+ */
+var fairCandySwap = function(A, B) {
+    var sumA = 0, sumB = 0;
+    for(let i=0; i<A.length; i++){
+        sumA += A[i];
+    }
+    for(let j=0; j<B.length; j++){       
+        sumB += B[j];
+    }
+    let diff = sumA - sumB;
+    for(let i=0; i<A.length; i++){
+        for(let j=0; j<B.length; j++){
+            if (A[i] - B[j] === diff/2){
+                return [A[i],B[j]];
+            }
+        }
+    }
+};
