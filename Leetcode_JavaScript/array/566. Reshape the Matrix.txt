@@ -1,0 +1,24 @@
+/**
+ * @param {number[][]} nums
+ * @param {number} r
+ * @param {number} c
+ * @return {number[][]}
+ */
+var matrixReshape = function(nums, r, c) {
+    let row = nums.length, colum = nums[0].length;
+    if ( row * colum != r * c){
+        return nums;
+    }
+    else {
+        var res = [];
+        nums = nums.reduce((total, item) => total.concat(item),[]);
+        for (let i=0; i<r; i++){
+            res[i] = [];
+            for (let j=0; j<c; j++){
+                let pick = nums.shift();
+                res[i][j] = pick;
+            }
+        }
+    }
+    return res;
+};
