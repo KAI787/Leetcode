@@ -1,9 +1,0 @@
-var maxProfit = function(prices) {
-    var res = 0;
-    if (prices.length <= 1)
-        return 0;
-    for (var i=0; i<prices.length-1; i++){
-        res += Math.max(0,prices[i+1]-prices[i]);
-        }
-    return res;
-};
