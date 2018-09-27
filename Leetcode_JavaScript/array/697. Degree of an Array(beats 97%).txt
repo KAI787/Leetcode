@@ -1,0 +1,19 @@
+var findShortestSubArray = function(nums) {
+    let dic = {}, first = {}, last = {}, max = 0, min = nums.length;
+    for (let i=0; i<nums.length; i++){
+        dic[nums[i]] = (dic[nums[i]] || 1) + 1;
+        max = Math.max(dic[nums[i]], max)
+    
+        if (first[nums[i]] === undefined){
+            first[nums[i]] = i;
+        }
+    
+        last[nums[i]] = i;
+    }
+    for(v in dic){
+        if(dic[v] === max){
+            min = Math.min(last[v]-first[v], min);
+        }
+    }
+   return min+1;
+};
