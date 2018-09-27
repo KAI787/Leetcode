@@ -5,15 +5,7 @@
 var isOneBitCharacter = function(bits) {
     let lastone;
     for( let i=0; i<bits.length; i++){
-        if (bits[i] === 0){
-            lastone = i;
-        }
-        if(bits[i] === 1){
-            i++;
-        }
+        bits[i] === 0 ? lastone = i : i++;
     }
-    if(lastone === bits.length-1){
-        return true;
-    }
-    return false;
+    return lastone === bits.length-1 ? true : false;
 };
