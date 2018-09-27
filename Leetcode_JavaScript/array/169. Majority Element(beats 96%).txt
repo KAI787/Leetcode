@@ -1,28 +1,19 @@
-var productExceptSelf = function(nums) {
-    var res = nums;
-    var product = 1;
-    var numOf0 = 0;
-    var markPoint = -1;
-    for (var i=0; i<nums.length; i++){
-        if (nums[i] === 0 && numOf0 < 2){
-            nums[i] = 1;
-            numOf0++;
-            markPoint = i;
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+Method 1: beats 96%
+var majorityElement = function(nums) {
+    var dic = {};
+    for (let i=0; i<nums.length; i++){
+        dic[nums[i]] = (dic[nums[i]]+1) || 1;
+        if (dic[nums[i]] > nums.length/2){
+            return nums[i];
         }
-        product *= nums[i];
     }
-    for (var i=0; i<nums.length; i++){
-        if (numOf0 === 2){
-            res[i] = 0;
-            continue;
-        }
-        if (markPoint !== -1 && markPoint !== i){
-            res[i] = 0;
-            continue;
-        }
-        if (res[i] === 0)
-            res[i] = 1;
-        res[i] = product / res[i];
-    }
-    return res;
+};
+
+Method 2:one line but beats 28%
+var majorityElement = function(nums) {
+    return nums.sort()[Math.floor(nums.length/2)];
 };
