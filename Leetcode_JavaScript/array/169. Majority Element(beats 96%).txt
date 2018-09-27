@@ -1,0 +1,28 @@
+var productExceptSelf = function(nums) {
+    var res = nums;
+    var product = 1;
+    var numOf0 = 0;
+    var markPoint = -1;
+    for (var i=0; i<nums.length; i++){
+        if (nums[i] === 0 && numOf0 < 2){
+            nums[i] = 1;
+            numOf0++;
+            markPoint = i;
+        }
+        product *= nums[i];
+    }
+    for (var i=0; i<nums.length; i++){
+        if (numOf0 === 2){
+            res[i] = 0;
+            continue;
+        }
+        if (markPoint !== -1 && markPoint !== i){
+            res[i] = 0;
+            continue;
+        }
+        if (res[i] === 0)
+            res[i] = 1;
+        res[i] = product / res[i];
+    }
+    return res;
+};
