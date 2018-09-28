@@ -1,0 +1,8 @@
+beats 11%:
+var minCostClimbingStairs = function(cost) {
+    let l = cost.length;
+    for (let i=2; i<l; i++){
+        cost[i] += Math.min(cost[i-2], cost[i-1]);
+    }    
+    return Math.min(cost[l-1], cost[l-2]);
+};
