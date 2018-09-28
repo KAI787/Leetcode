@@ -1,0 +1,17 @@
+Original beats 91%:
+
+var generate = function(numRows) {
+    let ans = new Array();
+    for(let i=0; i<numRows; i++){
+        ans[i] = [];
+        for (let j=0; j<=i; j++){
+            if (j===0 || j===i){
+                ans[i][j] = 1;
+            }
+            else {
+                ans[i][j] = ans[i-1][j-1] + ans[i-1][j];
+            }
+        }
+    }
+    return ans;
+};
