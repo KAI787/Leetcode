@@ -1,0 +1,22 @@
+Original beats 99%:
+var largeGroupPositions = function(S) {
+    let ans = [], first = 0, last = 0;
+    for (let i=0; i<S.length-1; i++){
+        first = i;
+        if (S[first] === S[i+1]){
+            i++;
+            if (S[first] === S[i+1]){
+                i++;
+                last = i;
+                while(S[first] === S[i+1]){
+                    last = i+1;
+                    i++;
+                }
+                ans.push([first, last]);
+                i--;
+            }
+        }
+    }
+    return ans;
+};
+
