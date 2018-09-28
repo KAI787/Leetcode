@@ -1,0 +1,29 @@
+/**
+ * @param {number[][]} M
+ * @return {number[][]}
+ */
+var imageSmoother = function(M) {
+    let N = new Array();
+    let r = M.length, c = M[0].length;
+    for(let i=0; i<r; i++){
+        N[i] = new Array();
+        for(let j=0; j<c; j++){
+            N[i][j] = 0;
+        }
+    }
+    for(let i=0; i<r; i++){
+        for(let j=0; j<c; j++){
+            var count = 0;
+            for(var nr=i-1;nr<=i+1;++nr){
+                for(var nc=j-1;nc<=j+1;++nc){
+                    if(0<=nr&&nr<r&&0<=nc&&nc<c){
+                        N[i][j] += M[nr][nc];
+                        count++;
+                    }
+                }
+            }
+            N[i][j] = Math.floor(N[i][j]/count);
+        }
+    }
+    return N;
+};
