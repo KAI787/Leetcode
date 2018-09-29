@@ -1,3 +1,4 @@
+Method1:
 var getRow = function(rowIndex) {
     var res = [1];
     for (var i=0; i<rowIndex; i++){
@@ -9,4 +10,23 @@ var getRow = function(rowIndex) {
         res.unshift(1);
     }
     return res;
+};
+
+
+
+Method2 (Original) beats 92%:
+var getRow = function(rowIndex) {
+    let ans = new Array();
+    for(let i=0; i<=rowIndex; i++){
+        ans[i] = [];
+        for (let j=0; j<=i; j++){
+            if (j===0 || j===i){
+                ans[i][j] = 1;
+            }
+            else {
+                ans[i][j] = ans[i-1][j-1] + ans[i-1][j];
+            }
+        }
+    }
+    return ans[rowIndex];
 };
