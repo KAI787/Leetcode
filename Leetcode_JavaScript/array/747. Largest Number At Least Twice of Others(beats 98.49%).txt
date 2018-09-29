@@ -1,0 +1,16 @@
+Original beats 98.4%:
+
+var dominantIndex = function(nums) {
+    let index = 0, max2nd = 0, max = 0;
+    for(let i=0; i<nums.length; i++){
+        if(nums[i]>max){
+            max2nd = max;
+            max = nums[i];
+            index = i;
+        }
+        else if (nums[i] > max2nd){
+            max2nd = nums[i];
+        }
+    }
+    return max/max2nd >= 2? index: -1;
+};
