@@ -1,5 +1,4 @@
-Original beats 91%:
-
+Method 1 (Original) beats 91%:
 var generate = function(numRows) {
     let ans = new Array();
     for(let i=0; i<numRows; i++){
@@ -14,4 +13,21 @@ var generate = function(numRows) {
         }
     }
     return ans;
+};
+
+Method 2:
+var generate = function(numRows) {
+    var number=[];
+    for (var r=1; r<=numRows; r++){
+        number[r-1] = [1];
+        for (var v=1; v<=r; v++){
+            if(v===1 || v===r){
+                number[r-1][v-1] = 1;
+            }
+            if(r>2 && v!==1 && v!==r){
+                number[r-1][v-1] = number[r-2][v-2] + number[r-2][v-1];
+            }
+        }
+    }
+    return number;
 };
