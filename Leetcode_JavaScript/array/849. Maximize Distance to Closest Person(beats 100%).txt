@@ -1,0 +1,15 @@
+var generate = function(numRows) {
+    var number=[];
+    for (var r=1; r<=numRows; r++){
+        number[r-1] = [1];
+        for (var v=1; v<=r; v++){
+            if(v===1 || v===r){
+                number[r-1][v-1] = 1;
+            }
+            if(r>2 && v!==1 && v!==r){
+                number[r-1][v-1] = number[r-2][v-2] + number[r-2][v-1];
+            }
+        }
+    }
+    return number;
+};
