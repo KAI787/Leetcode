@@ -1,0 +1,24 @@
+var findUnsortedSubarray = function(nums) {
+    let sortArr = [], left = 0, right = nums.length-1;
+    for(let i=0; i<nums.length; i++){
+        sortArr[i] = nums[i];
+    }
+    nums.sort((a,b) => a-b);
+    if(sortArr.toString() === nums.toString()) {
+        return 0;
+    }
+    
+    for(let i=0; i<nums.length; i++){
+        if (nums[i] !== sortArr[i]){
+            left = i;
+            break;
+        }
+    }
+    for (let i=nums.length-1; i>=0; i--){
+        if(nums[i] !== sortArr[i]){
+            right = i;
+            break;
+        }
+    }
+    return right - left + 1;
+};
