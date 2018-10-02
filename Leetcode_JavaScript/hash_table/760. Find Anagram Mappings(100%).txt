@@ -1,0 +1,12 @@
+var anagramMappings = function(A, B) {
+    var res = [];
+    for(var i=0; i<A.length; i++){
+        for (var j=0; j<B.length; j++){
+            if (A[i] === B[j]){
+                    res.push(j);
+                    break;
+                }
+        }
+    }
+    return res;
+};
