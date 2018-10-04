@@ -19,7 +19,6 @@ var twoSum = function(nums, target) {
     }   
 };
 
-
 Method 3:
 var twoSum = function(nums, target) {
     let res = [];
