@@ -1,0 +1,25 @@
+var numberOfBoomerangs = function(points) {
+    var len = points.length;
+    var count = 0;
+    for(let i=0; i<len; i++){
+        let map1 = new Map();
+        for(let j=0; j<len; j++){
+            if(i === j)
+                {
+                    continue;
+                }
+                
+            var d = Math.pow((points[i][0]-points[j][0]),2) + Math.pow((points[i][1]-points[j][1]),2);
+            if(map1.get(d)){
+                map1.set(d, map1.get(d)+1);
+            }
+            else{
+                map1.set(d, 1);
+            }
+        }
+        map1.forEach(function(m){                     
+            count += m*(m-1);
+        });
+    }
+    return count;
+};
