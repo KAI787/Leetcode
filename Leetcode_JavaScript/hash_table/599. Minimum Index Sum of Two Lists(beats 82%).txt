@@ -1,0 +1,18 @@
+var findRestaurant = function(list1, list2) {
+    let arr = [];
+    let indexSum = 0;
+    var index2;
+    list1.forEach((element, index1) => {
+        index2 = list2.indexOf(element);
+        if(index2 !== -1){
+            indexSum = index1 + index2;
+            if(!arr[indexSum]) arr[indexSum]=[];
+            arr[indexSum].push(element);
+        }
+        
+    });
+    for(let i=0; i<arr.length; i++){
+        if(arr[i])
+            return arr[i];
+    }
+};
