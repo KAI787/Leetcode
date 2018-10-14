@@ -1,0 +1,29 @@
+Method1, using Set, beats 72%
+var intersection = function(nums1, nums2) {
+    var s1 = new Set(nums1);
+    var res = new Set(nums2.filter(n => s1.has(n)));
+    return Array.from(res);
+};
+
+
+Method2, Original beats 72%:
+var intersection = function(nums1, nums2) {
+    var res = [];
+    for(let i=0; i<nums1.length; i++){
+        for(let j=0; j<nums2.length; j++){
+            if(nums1[i] === nums2[j]){
+                if(res.length === 0)
+                    res.push(nums1[i]);
+                else{
+                    for(let n=0; n<res.length; n++){
+                        if (nums1[i] === res[n])
+                            break;
+                        else if(n === res.length-1)
+                            res.push(nums1[i]);
+                    }
+                }
+            }
+        }   
+    }
+    return res;
+};
