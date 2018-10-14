@@ -1,0 +1,33 @@
+method1 beats 82%:
+var longestPalindrome = function(s) {
+    var map = {}, count = 0;
+    for(let i=0; i<s.length; i++){
+        if(map[s[i]] === undefined){
+            map[s[i]] = 1;
+        }
+        else{
+            map[s[i]] = undefined;
+            count += 2;
+        }
+    }
+    if(s.length > count)
+        count++;
+    return count;
+};
+
+method2, original beat32%:
+var longestPalindrome = function(s) {
+    var map = {}, count = 0;
+    for(let i=0; i<s.length; i++){
+        if(map[s[i]] === undefined){
+            map[s[i]] = 1;
+        }
+        else{
+            map[s[i]] = undefined;
+            count += 2;
+        }
+    }
+    if(s.length > count)
+        count++;
+    return count;
+};
