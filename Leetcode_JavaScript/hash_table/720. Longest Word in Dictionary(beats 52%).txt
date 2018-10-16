@@ -1,0 +1,20 @@
+var longestWord = function(words) {
+    words.sort()
+    var res = ''
+    var wordSet = new Set(words)
+    for(let w of wordSet){
+        let isValid = true
+        let key = ''
+        for(let i=0; i<w.length-1; i++){
+            key += w[i]
+            if(!wordSet.has(key)){
+                isValid = false
+                break;
+            }
+        }
+        if(w.length > res.length && isValid === true){
+            res = w
+        }
+    }
+    return res;
+};
