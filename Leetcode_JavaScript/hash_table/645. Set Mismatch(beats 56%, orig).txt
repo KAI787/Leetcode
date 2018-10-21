@@ -1,0 +1,15 @@
+var findErrorNums = function(nums) {
+    let map = {}, dup =-1, mis = -1
+    for(let e of nums){
+        if(map[e])
+            dup = e
+        else
+            map[e] = 1
+    }
+    for(let i=1; i<nums.length+1; i++){
+        if(!map[i]){
+            mis = i
+            return [dup, mis]
+        }
+    }
+};
