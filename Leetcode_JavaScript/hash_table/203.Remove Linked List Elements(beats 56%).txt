@@ -1,35 +1,13 @@
-Method1, easy to understand but slow, beats 15%:
-
-var isHappy = function(n) {
-    var seen = {};
-    while(!seen[n] && n !== 1){
-        seen[n] = true;
-        n = sum(n);
-    }
-    return n === 1? true: false;
-};
-function sum(n){
-    return n.toString().split('').reduce((add, value) => {
-        return add += Math.pow(value, 2);
-    }, 0);
-}
-
-
-Method2, do not know why let digit === n, beats 97%:
-var isHappy = function(n) {
-    let temp;
-    while(n !== 1){
-        temp = 0;
-        while(n > 0){
-            var digit = Math.pow(n%10, 2);
-            temp += digit;
-            n = Math.floor(n/10);
-            
-            if(digit === n && digit !== 1){
-                return false;
-            }
+var removeElements = function(head, val) {
+    while(head && head.val === val)
+        head = head.next
+    let ans = head   
+    while(head && head.next){       
+        if(head.next.val === val){
+            head.next = head.next.next
+            continue
         }
-        n = temp;
+        head = head.next
     }
-    return true;
+    return ans
 };
