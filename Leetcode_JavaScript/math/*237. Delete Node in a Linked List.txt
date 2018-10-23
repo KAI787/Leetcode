@@ -1,0 +1,15 @@
+var selfDividingNumbers = function(left, right) {
+    let arr = []
+    for(let i=left; i<=right; i++){
+        let temp = true, a = 1
+        while(temp && a<=i){
+            if(i % Math.floor(i%(a*10)/a) !== 0){
+                temp = false
+            }
+            a *= 10
+        }
+        if(temp)
+            arr.push(i)
+    }
+    return arr
+};
