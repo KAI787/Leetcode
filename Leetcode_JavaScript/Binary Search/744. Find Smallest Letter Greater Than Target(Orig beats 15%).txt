@@ -1,0 +1,29 @@
+Method1 beats 100%
+var nextGreatestLetter = function(letters, target) {
+    let l = letters.length
+    let head = 0, tail = l-1
+    while(head <= tail){
+        let mid = Math.floor((tail-head)/2) + head
+        
+        if(letters[mid] > target)
+            tail = mid - 1
+        else
+            head = mid + 1
+    }
+    return letters[head % l]
+};
+
+
+
+
+Method2 Orig beats 15% 
+var nextGreatestLetter = function(letters, target) {
+    let l = letters.length
+    for(let i=0; i<l; i++){
+        if(letters[i] > target)
+            return letters[i]
+        if(i === l-1 && letters[i] <= target)
+            return letters[0]
+    }
+};
+
