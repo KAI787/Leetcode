@@ -1,0 +1,11 @@
+var intersect = function(nums1, nums2) {
+    let ans = []
+    for(let e of nums1){
+        let i = nums2.indexOf(e)
+        if(i !== -1){
+            nums2.splice(i,1)
+            ans.push(e)
+        }
+    }
+    return ans
+};
