@@ -1,0 +1,23 @@
+Method1 beats 100% recursive:
+//调用本身函数，closest等于旁枝上最接近target的node，最后比较root和closest谁更接近target
+var closestValue = function(root, target) {
+    let child = Math.abs(root.val < target)? root.right: root.left
+    if(!child)
+        return root.val
+    let closest = closestValue(child, target)
+    return Math.abs(closest-target) < Math.abs(root.val-target)? closest: root.val
+};
+
+Method2 iterative:
+//遍历二叉树，closest始终等于最接近target的root.val
+var closestValue = function(root, target) {
+    let closest = root.val
+    while(root){
+        if(Math.abs(root.val - target) < Math.abs(closest - target))
+            closest = root.val
+        if(closest === target)
+            return closest
+        root = root.val < target? root.right: root.left
+    }
+    return closest
+};
