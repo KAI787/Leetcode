@@ -1,0 +1,14 @@
+Method1 Orig beats72%: 
+var intersection = function(nums1, nums2) {
+    let set = new Set()
+    for(let element of nums1){
+        if(nums2.indexOf(element) !== -1)
+            set.add(element)
+    }
+    return Array.from(set)
+};
+
+Method2 1-line Orig beats72%
+var intersection = function(nums1, nums2) {
+    return [...new Set(nums2.filter(x => nums1.indexOf(x) !== -1))]
+};
