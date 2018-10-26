@@ -1,0 +1,27 @@
+//斐波那契数列：0，1，1，2，3，5，8，...
+//从前方到达第n-1个台阶，再到达顶端，有2种方法
+//从前方到达第n-2个台阶，再到达顶端，有1种方法
+//无论之前是多少种方法到达第n-3个台阶，也不影响后面这两级台阶是不重复的。
+//以此类推，当n=1时有1种，当n=2时有2种，当n=3时有3种，当n=4时有5种，当n=5时有8种...
+//就构成了斐波那契数列, 每往前一个台阶，方法都是后两级台阶方法之和
+
+var climbStairs = function(n) {
+    let prev = 0, next = 1, sum = 0
+    for(let i=1; i<=n; i++){
+        sum = prev + next
+        prev = next
+        next = sum
+    }
+    return sum
+};
+
+
+
+Same method, but beats 100%:
+
+var climbStairs = function(n) {
+    a = b = 1
+    while (n--) 
+        a = (b += a) - a
+    return a
+};
