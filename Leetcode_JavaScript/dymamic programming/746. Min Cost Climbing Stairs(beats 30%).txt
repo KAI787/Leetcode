@@ -1,0 +1,9 @@
+//因为每次“付钱”后都可以跳一步或2步
+//那么就找向前-1步和-2步中的最小值（因为-1步和-2步都可以直接跳到现在的台阶）
+//那么不断筛选出目前的最优解，最后比较第l-1步和l-2步就可以了
+var minCostClimbingStairs = function(cost) {
+    let l = cost.length
+    for(let i=2; i<l; i++)
+        cost[i] += Math.min(cost[i-1], cost[i-2])
+    return Math.min(cost[l-1], cost[l-2])
+};
