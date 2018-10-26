@@ -1,0 +1,14 @@
+//因为房间不能相邻，所以分奇数项和偶数项分别进行考虑，不过需要注意的是，不能仅仅将奇数项或偶数项相加进行比较，比如[1,9,1,1,9]
+//对偶数项，a + nums[i]为新的最大rob值候选，将其与b比较，能得到最大rob值。当抵达下一个偶数项时，不会受相邻限制
+//对奇数项也同理
+//最后取最终a与b中，比较大的那个
+
+var rob = function(nums) {
+    let l = nums.length, a = 0, b = 0
+    for(let i=0; i<l; i++)
+        if(i%2 === 0)
+            a = Math.max(a+nums[i], b)
+        else
+            b = Math.max(b+nums[i], a)
+    return Math.max(a, b)
+};
