@@ -1,0 +1,13 @@
+//从第一项开始，依次累加，如果加上某项之后，反而比该项本身还小，那么就放弃之前的累加结果，从该项开始算起
+//但是上面的方法，只能保证之前累加之和为正，不能保证取到最高点
+//所以引入finalSum参数，每次都和tempSum比较，把最高的累加和保存下来
+//时间复杂度O(n),空间复杂度S(2)
+var maxSubArray = function(nums) {
+    var finalSum = nums[0];
+    var tempSum = nums[0];
+    for (var i=1; i<nums.length; i++){
+        tempSum = Math.max(nums[i], tempSum+nums[i]);
+        finalSum = Math.max(finalSum, tempSum);
+    }
+    return finalSum;
+};
