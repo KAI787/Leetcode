@@ -1,0 +1,15 @@
+var countCornerRectangles = function(grid) {
+    let h = grid.length, w = grid[0].length, ans = 0
+    for(let i=0; i<h-1; i++){
+        for(let j=i+1; j<h; j++){
+            let counter = 0
+            for(let k=0; k<w; k++){
+                if(grid[i][k]===1 && grid[j][k]===1)
+                    counter++
+            }
+            if(counter>0)
+                ans += counter*(counter - 1)/2
+        }
+    }
+    return ans
+};
