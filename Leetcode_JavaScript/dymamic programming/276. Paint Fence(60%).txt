@@ -1,0 +1,14 @@
+//因为此题的问题是“不能连续2个重复”，所以我们考虑最后2个的情况：1. 最后2个颜色相同(samecolor)； 2. 最后2个颜色不同(diffcolor)
+//每增加一个post，分2种情况；1. diffcolor时，应该乘以k-1种可能； 2. samecolor时，代表之前一定是diffcolor，不然不满足连续2个颜色不同
+var numWays = function(n, k) {
+    if(n === 0) return 0
+    else if(n === 1) return k
+    let samecolor = k, diffcolor = (k-1)*k
+    for(let i=2; i<n; i++){
+        let temp = diffcolor
+        diffcolor = (diffcolor + samecolor) * (k - 1)
+        samecolor = temp
+    }
+    
+    return samecolor + diffcolor
+};
