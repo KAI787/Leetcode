@@ -1,0 +1,10 @@
+var generatePossibleNextMoves = function(s) {
+    let ans = [], pos = s.indexOf("++")
+    if(s.length < 2)
+        return []
+    while(pos !== -1){
+        ans.push(s.substr(0,pos) + '--' + s.substr(pos+2))
+        pos = s.indexOf('++',pos+1)
+    }
+    return ans
+};
