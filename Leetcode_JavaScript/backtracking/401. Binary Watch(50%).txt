@@ -1,0 +1,16 @@
+//第一步：对于所有可能的“hour：min”，依次判断其是否满足条件：有num个“1”
+//用到的函数包括：1.toString(2)，意思是把十进制数字转化为二进制，并转化为字符串；2.split(1)，以1为界线 将字符串分开，它的长度恰好比1的数目多一个
+//第二步：筛选出“1”的数目等于num的 相应的hour和min，生成结果数组
+var readBinaryWatch = function(num) {
+    let count = 0, res = []
+    for(let hour=0; hour <= 11; hour++){
+        for(let min=0; min <= 59; min++){
+            count = hour.toString(2).split(1).length + min.toString(2).split(1).length - 1 - 1
+            if(count === num){
+                let temp = hour.toString() + ':' + ((min < 10)? "0" + min.toString(): min.toString())
+                res.push(temp)
+            }
+        }
+    }
+    return res
+};
