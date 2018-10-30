@@ -1,0 +1,23 @@
+//把A数组中的 每一个字符串里的 奇数项的字符和偶数项的字符 挑出来，排好序，放在map中
+//如果有“Special-Equivalent String”，那么将其排好序，两者肯定相等。比如将“abcdef”和“cdefab”的奇数项+偶数项，排好序后都是“acebdf”，其中“ace”是奇数项的排序结果，“bdf”是偶数项的排序结果
+var numSpecialEquivGroups = function(A) {
+    let map = {}, count = 0
+    for(let ele of A){
+        let odd = [], even = []
+        for(let j=0; j<ele.length; j++){
+            if(j%2 === 0){
+                odd.push(ele[j])
+            }
+            else{
+                even.push(ele[j])
+            }
+        }
+        key = even.sort().join('') + odd.sort().join('')
+        
+        if(!map[key]){
+            map[key] = true
+            count ++
+        }
+    }
+    return count
+};
