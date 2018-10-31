@@ -1,0 +1,13 @@
+var toGoatLatin = function(S) {
+    let vow = 'aeiouAEIOU', ans = []
+    str = S.split(' ')
+    for(let i=0; i<str.length; i++){
+        if(vow.indexOf(str[i][0]) !== -1)
+            ans.push(str[i] + 'ma')
+        else
+            ans.push((str[i]+str[i][0]).substring(1) + 'ma')
+        for(let j=0; j<=i; j++)
+            ans[i] += 'a'
+    }
+    return ans.join(' ')
+};
