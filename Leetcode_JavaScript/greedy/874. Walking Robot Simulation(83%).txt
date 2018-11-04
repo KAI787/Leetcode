@@ -1,0 +1,23 @@
+var robotSim = function(commands, obstacles) {
+    let dirs = [[0,1], [1,0], [0,-1], [-1,0]], max = 0, dir = 0, x = 0, y = 0
+    let set = new Set(obstacles.map(v => v[0] + ':' + v[1]))
+    for(let e of commands){
+        if(e === -1)
+            dir = (dir + 1) % 4
+        else if(e === -2)
+            dir = (dir + 3) % 4
+        else{
+            for(let i=0; i<e; i++){
+                x += dirs[dir][0]
+                y += dirs[dir][1]
+                if(set.has(x + ':' + y)){
+                    x -= dirs[dir][0]
+                    y -= dirs[dir][1]
+                    break
+                }
+            }
+            max = Math.max(max, x*x + y*y)
+        }
+    }
+    return max
+};
