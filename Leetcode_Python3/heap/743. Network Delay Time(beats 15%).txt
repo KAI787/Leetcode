@@ -1,0 +1,29 @@
+class Solution:
+    def networkDelayTime(self, times, N, K):
+        """
+        :type times: List[List[int]]
+        :type N: int
+        :type K: int
+        :rtype: int
+        """
+        graph = collections.defaultdict(list)
+        for u, v, w in times:
+            graph[u].append((w, v))
+        
+        dist = {node: float('inf') for node in range(1, N+1)}
+        
+        # 顺着起点一路经过各个node，路过的distance叫做elapsed.
+        def dfs(node, elapsed):
+            # 如果发现经过的路程长度elapsed反而大于此处本来长度，那么证明绕了远路，抛弃此路线
+            if elapsed >= dist[node]:
+                return 
+            # 路上经过某node，那么就把目前的长度elapsed赋值给此node
+            dist[node] = elapsed
+            # 将上一个终点end作为下一个的起点，继续探索所有路线。深度优先算法dfs，直到某路不通才退出来，选择下一条路
+            for time, end in sorted(graph[node]):
+                dfs(end, elapsed + time)
+                
+        dfs(K, 0)
+        # as question description, "all nodes to receive the signal" is required.
+        ans = max(dist.values())
+        return ans if ans < float('inf') else -1
