@@ -6,3 +6,4 @@ class Solution(object):
         :rtype: int
         """
         return sum(map(S.count,J))
+ 
