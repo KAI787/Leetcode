@@ -1,0 +1,19 @@
+class Solution:
+    def diameterOfBinaryTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        self.ans = 0
+        
+        def depth(d):
+            if not d:
+                return 0
+            left = depth(d.left)
+            right = depth(d.right)
+            # 找到左右两边各最长的深度，把两边加起来
+            self.ans = max(self.ans, left + right)
+            # 找到深度后加一，并返回至上一层继续运算
+            return 1 + max(left, right)
+        depth(root)
+        return self.ans
