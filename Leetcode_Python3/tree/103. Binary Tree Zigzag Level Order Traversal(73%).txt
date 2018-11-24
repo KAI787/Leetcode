@@ -1,0 +1,21 @@
+class Solution:
+    def zigzagLevelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        ans = []
+        self.addZig(root, 0, ans)
+        return ans
+    
+    def addZig(self, node, level, ans):
+        if not node:
+            return
+        elif len(ans) <= level:
+            ans.append([node.val])
+        elif not level%2:
+            ans[level].append(node.val)
+        else:
+            ans[level].insert(0, node.val)
+        self.addZig(node.left, level+1, ans)
+        self.addZig(node.right, level+1, ans)
