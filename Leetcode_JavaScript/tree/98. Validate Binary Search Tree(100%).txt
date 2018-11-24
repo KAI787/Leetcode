@@ -1,0 +1,19 @@
+# 先按照dfs，生成从小到大的数组，然后比较这个数组是不是升序排列的
+
+var isValidBST = function(root) {
+    let output = []
+    getSort(root, output)
+    for(let i = 1; i < output.length; i++){
+        if(output[i-1] >= output[i])
+            return false
+    }
+    return true
+};
+
+function getSort(node, output){
+    if(!node)
+        return
+    getSort(node.left, output)
+    output.push(node.val)
+    getSort(node.right, output)
+}

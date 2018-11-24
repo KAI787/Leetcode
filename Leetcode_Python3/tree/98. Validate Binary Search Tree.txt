@@ -1,0 +1,35 @@
+# method 1
+# 不理解：为什么minNode = float('inf')要放在def里，而不能放在函数中。放在函数中就会提示31行（明明没有31行）缺少minNode和maxNode。
+
+class Solution:
+    def isValidBST(self, root, minNode = float('inf'), maxNode = float('-inf')):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if not root:
+            return True
+        if root.val >= minNode or root.val <= maxNode:
+            return False
+        return self.isValidBST(root.left, min(minNode, root.val), maxNode) and self.isValidBST(root.right, minNode, max(maxNode, root.val))
+
+# method 2, Beats 80%
+class Solution:
+    def isValidBST(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        output = []
+        self.getSort(root, output)
+        for i in range(1, len(output)):
+            if output[i-1] >= output[i]:
+                return False
+        return True
+        
+    def getSort(self, root, output):
+        if not root:
+            return 
+        self.getSort(root.left, output)
+        output.append(root.val)
+        self.getSort(root.right, output)
