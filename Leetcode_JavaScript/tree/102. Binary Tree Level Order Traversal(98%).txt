@@ -1,0 +1,16 @@
+var levelOrder = function(root) {
+    let ans = []
+    addZig(root, 0, ans)
+    return ans
+};
+
+function addZig(node, level, ans){
+    if(node === null)
+        return
+    else if(ans.length <= level)
+        ans.push([node.val])
+    else
+        ans[level].push(node.val)
+    addZig(node.left, level+1, ans)
+    addZig(node.right, level+1, ans)
+}
