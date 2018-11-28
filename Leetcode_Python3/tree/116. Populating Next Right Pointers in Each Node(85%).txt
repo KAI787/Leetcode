@@ -1,0 +1,16 @@
+class Solution:
+    # @param root, a tree link node
+    # @return nothing
+    def connect(self, root):
+        if not root:
+            return 
+        while root.left:
+            cur = root.left
+            solve_interval = None
+            while root:
+                if solve_interval:
+                    solve_interval.next = root.left
+                root.left.next = root.right
+                solve_interval = root.right
+                root = root.next
+            root = cur

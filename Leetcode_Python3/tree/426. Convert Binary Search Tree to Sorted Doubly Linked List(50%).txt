@@ -1,0 +1,28 @@
+class Solution:
+    def treeToDoublyList(self, root):
+        """
+        :type root: Node
+        :rtype: Node
+        """
+        def tranverse(node):
+            if not node.left and not node.right:
+                return node, node
+            if node.left:
+                hl, tl = tranverse(node.left)
+                tl.right = node
+                node.left = tl
+            else:
+                hl, tl = node, node
+            if node.right:
+                hr, tr = tranverse(node.right)
+                hr.left = node
+                node.right = hr
+            else:
+                hr, tr = node, node
+            return hl, tr
+        if not root:
+            return None
+        hl, tr = tranverse(root)
+        hl.left = tr
+        tr.right = hl
+        return hl
