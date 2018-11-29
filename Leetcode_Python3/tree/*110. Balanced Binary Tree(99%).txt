@@ -1,0 +1,21 @@
+class Solution:
+    def isBalanced(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        balanced, maxdeep = self.validate(root)
+        return balanced
+
+    def validate(self, node):
+        if node is None:
+            return True, 0
+
+        balanced, leftdeep = self.validate(node.left)
+        if not balanced:
+            return False, 0
+        balanced, rightdeep = self.validate(node.right)
+        if not balanced:
+            return False, 0
+
+        return abs(leftdeep - rightdeep) <= 1, max(leftdeep, rightdeep)+1
