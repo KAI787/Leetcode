@@ -1,0 +1,14 @@
+class Solution:
+    def licenseKeyFormatting(self, S, K):
+        """
+        :type S: str
+        :type K: int
+        :rtype: str
+        """
+        S = S.replace('-', '').upper()
+        fir = K if len(S) % K == 0 else len(S) % K
+        ans = S[0:fir]
+        while fir < len(S):
+            ans += '-' + S[fir:fir+K]
+            fir += K
+        return ''.join(ans)

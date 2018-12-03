@@ -1,0 +1,15 @@
+class Solution:
+    def nextClosestTime(self, time):
+        """
+        :type time: str
+        :rtype: str
+        """
+        h, m = time.split(":")
+        cur = int(h) * 60 + int(m)
+        res = None
+        for i in range(cur + 1, cur + 24 * 60 + 1):
+            t = i % 1440
+            h, m = t // 60, t % 60
+            res = '%02d:%02d' % (h, m)
+            if(set(res) <= set(time)):
+                return res
