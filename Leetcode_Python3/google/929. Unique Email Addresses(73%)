@@ -1,0 +1,26 @@
+# 1st step: divide emails into two parts: local and rest.
+# 2nd step: pick up str before "+" from local
+# 3rd step: replace all "." with "" from local
+# 4th step: join local and rest
+# change local + rest into set and return the length
+
+class Solution:
+    def numUniqueEmails(self, emails):
+        """
+        :type emails: List[str]
+        :rtype: int
+        """
+        list = []
+        local = []
+        rest = []
+        for email in emails:
+            list.append(email.split("@"))
+        for l in list:
+            a, b = l
+            local.append(a)
+            rest.append(b)
+        for i in range(len(local)):
+            local[i] = local[i].replace('.', '')
+            local[i] = local[i][:local[i].index('+')] if "+" in local[i] else local[i]
+            local[i] += rest[i] 
+        return len(set(local))
