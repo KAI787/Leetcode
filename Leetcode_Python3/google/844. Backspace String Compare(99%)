@@ -1,0 +1,16 @@
+class Solution:
+    def backspaceCompare(self, S, T):
+        """
+        :type S: str
+        :type T: str
+        :rtype: bool
+        """
+        def build(x):
+            a = []
+            for e in x:
+                if e != '#':
+                    a.append(e)
+                elif a:
+                    a.pop()
+            return "".join(a)
+        return build(S) == build(T)

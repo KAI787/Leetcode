@@ -1,0 +1,24 @@
+class Solution:
+    def mincostToHireWorkers(self, quality, wage, K):
+        """
+        :type quality: List[int]
+        :type wage: List[int]
+        :type K: int
+        :rtype: float
+        """
+        from fractions import Fraction
+        workers = sorted((Fraction(w, q), q, w) for q, w in zip(quality, wage))
+        sumq = 0
+        ans = float('inf')
+        pool = []
+        
+        for ratio, q, w in workers:
+            heapq.heappush(pool, -q)
+            sumq += q
+            
+            if len(pool) > K:
+                sumq += heapq.heappop(pool)
+            if len(pool) == K:
+                ans = min(ans, ratio * sumq)
+        
+        return float(ans)
