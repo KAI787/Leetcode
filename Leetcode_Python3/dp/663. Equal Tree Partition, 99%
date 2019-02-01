@@ -1,0 +1,16 @@
+class Solution:
+    def checkEqualTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        def sum(node):
+            if not node:
+                return 0
+            s = node.val + sum(node.left) + sum(node.right)
+            if node is not root:
+                theSet.add(s)
+            return s
+        
+        theSet = set()
+        return sum(root) / 2 in theSet

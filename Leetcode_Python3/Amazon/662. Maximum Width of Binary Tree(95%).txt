@@ -1,0 +1,13 @@
+class Solution:
+    def widthOfBinaryTree(self, root):
+        queue = [(root, 0, 0)]
+        curdep = res = left = 0
+        for node, depth, pos in queue:
+            if node:
+                queue.append([node.left, depth + 1, pos * 2])
+                queue.append([node.right, depth + 1, pos * 2 + 1])
+                if curdep != depth:
+                    curdep = depth
+                    left = pos
+                res = max(res, pos - left + 1)
+        return res
