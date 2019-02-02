@@ -1,0 +1,43 @@
+python3:
+class Solution:
+    def mergeKLists(self, lists):
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+        from heapq import heappush, heappop, heapreplace, heapify
+        dummy = node = ListNode(0)
+        h = [(n.val, i, n) for i, n in enumerate(lists) if n]
+        heapify(h)
+        while h:
+            val, i, n = h[0]
+            if n.next == None:
+                heapq.heappop(h)
+            else:
+                heapq.heapreplace(h, (n.next.val, i, n.next))
+            node.next = n
+            node = node.next
+        return dummy.next
+
+
+python2:
+
+class Solution(object):
+    def mergeKLists(self, lists):
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+        from heapq import heappush, heappop, heapreplace, heapify
+        dummy = node = ListNode(0)
+        h = [(n.val, n) for n in lists if n]
+        heapify(h)
+        while h:
+            val, n = h[0]
+            if n.next == None:
+                heapq.heappop(h)
+            else:
+                heapq.heapreplace(h, (n.next.val, n.next))
+            node.next = n
+            node = node.next
+        return dummy.next
