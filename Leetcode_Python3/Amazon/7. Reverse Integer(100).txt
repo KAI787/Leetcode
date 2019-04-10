@@ -1,0 +1,14 @@
+class Solution:
+    def reverse(self, x: 'int') -> 'int':
+        index = 1 if x > 0 else -1
+        s = str(x * index)
+        l = []
+        for i in range(len(s)):
+            l.append(s[-i-1])
+        res = int(''.join(l)) * index
+        return res if -1 * (2 ** 31) <= res <= (2 ** 31 - 1) else 0
+坑：1.注意负号
+2.注意32bit范围，而且是反过来以后的范围
+3.注意负数变string是带字符‘-’的
+
+总之读清题，依次检验限制条件
